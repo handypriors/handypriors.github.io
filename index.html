@@ -1,0 +1,374 @@
+<style>
+    .button {
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 5px 10px;
+        cursor: pointer;
+    }
+
+    .button1 {
+        border-radius: 5px;
+        background-color: white;
+        color: black;
+        border: 2px solid #2d6987
+            /* Green */
+    }
+
+    .button2 {
+        border-radius: 4px;
+    }
+
+    .button3 {
+        border-radius: 8px;
+    }
+
+    .button4 {
+        border-radius: 12px;
+    }
+
+    .button5 {
+        border-radius: 50%;
+    }
+
+
+    .td-center {
+        align: center;
+        text-align: center;
+        padding: 10px
+    }
+
+    .text_div {
+        text-align: justify;
+        text-justify: inter-word;
+    }
+
+    #blink {
+        color: red;
+        transition: 0.4s;
+    }
+
+    .crop {
+        width: 650px;
+
+        overflow: hidden;
+    }
+
+    .crop1 {
+        width: 650px;
+        margin: -75px 0 -75px 0px;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, auto);
+        gap: 10px;
+        padding: 10px;
+        background-color: #fff;
+        /* or any color that matches your design */
+    }
+
+    .grid-container2 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(1, auto);
+        gap: 10px;
+        padding: 10px;
+        background-color: #fff;
+        /* or any color that matches your design */
+    }
+
+    .grid-container3 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(1, auto);
+        gap: 10px;
+        padding: 10px;
+        background-color: #fff;
+        /* or any color that matches your design */
+    }
+
+    .grid-item {
+        text-align: center;
+        padding: 10px;
+        background: #f0f0f0;
+        /* or any color that matches your design */
+    }
+
+    .grid-item img {
+        width: 100%;
+        /* Adjust if you want smaller images */
+        height: auto;
+        /* Maintain the aspect ratio */
+    }
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="HandyPriors" />
+    <meta name="author" content="anonymous" />
+
+    <title>HandyPriors</title>
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet" />
+    <!--    <link rel="icon" href="img/favicon.gif" type="image/gif">-->
+    <style type="text/css">
+        .container {
+            zoom: 1;
+            margin-left: auto;
+            margin-right: auto;
+            vertical-align: middle;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .container_img {
+            zoom: 1;
+            margin-left: auto;
+            margin-right: auto;
+            vertical-align: middle;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .message {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            color: #212529;
+            background-color: #fff3bf;
+            border-radius: 0.25rem;
+            text-align: center;
+            vertical-align: middle;
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container" align="center">
+            <!-- <p class="message" style="font-size: small;">
+                    Accepted to ICRA 2023. Info below will be updated as the conference date approaches.
+                </p> -->
+            <p><b>
+                    HandyPriors: Physically Consistent Perception of Hand-Object Interactions with Differentiable Priors
+                </b></p>
+            <p>
+                <h2>
+                    <a href="#" target="_blank">Shutong Zhang</a><sup>1,*</sup>,&nbsp;
+                    <a href="#" target="_blank">Yiling Qiao</a><sup>2,*</sup>,&nbsp;
+                    <a href="#" target="_blank">Guanglei Zhu</a><sup>1,*</sup>,&nbsp;
+                    <a href="#" target="_blank">Eric Heiden</a><sup>3</sup>,&nbsp;
+                    <a href="#" target="_blank">Dylan Turpin</a><sup>1,3</sup>,&nbsp;
+                    <a href="#" target="_blank">Jingzhou Liu</a><sup>1</sup>,&nbsp;
+                    <br />
+                    <a href="#" target="_blank">Ming Lin</a><sup>2</sup>,&nbsp;
+                    <a href="#" target="_blank">Miles Macklin</a><sup>3</sup>,&nbsp;
+                    <a href="https://animesh.garg.tech/" target="_blank">Animesh Garg</a><sup>3</sup>
+                </h2>
+                <h2>
+                    <sup>1</sup><a href="https://web.cs.toronto.edu/" target="_blank">University of Toronto & Vector
+                        Institute</a> &nbsp;&nbsp;
+                    <sup>2</sup><a href="https://vectorinstitute.ai/" target="_blank">University of Maryland College
+                        Park</a>&nbsp;&nbsp;
+                    <sup>3</sup><a href="https://www.nvidia.com/en-us/research/" target="_blank">Nvidia</a> &nbsp;&nbsp;
+
+                </h2>
+            </p>
+            <h3>
+                <a href="https://arxiv.org/pdf/2311.16552.pdf">[Paper]</a>&nbsp;
+                <!-- <a href="#" style="color: grey;">[arXiv]</a>&nbsp; -->
+                <!-- <a href="https://youtu.be/wB7il1RnSe8">[Video]</a>&nbsp;
+                    <a href="https://events.infovaya.com/presentation?id=93443">[Session]</a>&nbsp;
+                    <a href="https://docs.google.com/presentation/d/1OOd-KWuRkRtqicUTKvm4butRuyZLld-W/edit?usp=share_link&ouid=111937283337659145443&rtpof=true&sd=true">[Slides]</a>&nbsp;
+                    <a href="https://drive.google.com/file/d/13XScBEj1by5yr6twnv3kYx-ecCmeB-YG/view?usp=share_link">[Poster]</a>&nbsp; -->
+                <!-- <a href="#" style="color: grey;">[Code]</a>&nbsp; -->
+                <!-- <a href="#" style="color: grey;">[Data]</a> -->
+            </h3>
+            <h4>
+                <!-- <a href="#" style="color: grey;">[Twitter Thread]</a>&nbsp; -->
+            </h4>
+        </div>
+    </div>
+
+    <div class="section">
+
+        <div class="container_img">
+            <p align="center">
+                <img border="0" src="data/teaser.png" style="width: 80%" />
+            </p>
+        </div>
+        <div class="container">
+            <div align="center">
+                <h1>Abstract</h1>
+            </div>
+            <hr />
+            <p style="text-align: justify; font-size: medium;">
+                Various heuristic objectives for modeling handobject interaction have been proposed in past work.
+                However, due to the lack of a cohesive framework, these objectives often possess a narrow scope
+                of applicability and are limited by their efficiency or accuracy. In this paper, we propose HANDYPRIORS,
+                a unified and general pipeline for pose estimation in human-object interaction scenes by leveraging
+                recent advances
+                in differentiable physics and rendering. Our approach employs rendering priors to align with input
+                images and segmentation masks along with physics priors to mitigate
+                penetration and relative-sliding across frames. Furthermore, we present two alternatives for hand and
+                object pose estimation. The
+                optimization-based pose estimation achieves higher accuracy, while the filtering-based tracking,
+                which utilizes the differentiable priors as dynamics and observation models, executes faster. We
+                demonstrate that HANDYPRIORS attains comparable
+                or superior results in the pose estimation task, and that the differentiable physics module can predict
+                contact information
+                for pose refinement. We also show that our approach generalizes to perception tasks, including robotic
+                hand manipulation and
+                human-object pose estimation in the wild.
+            </p>
+
+
+            <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
+
+            <div align="center">
+                <h1>Method</h1>
+            </div>
+            <hr />
+
+            <div class="row" id="method" style="max-width:1000px; margin:0 auto; text-align:justify">
+                <center>
+                    <img src="./data/overview.png" width="90%">
+                </center>
+                <br>
+                <p style="text-align: justify; font-size: medium;">
+                    <b>An overview of our optimization and filtering pipelines.</b> We provide two alternatives for
+                    utilizing the differentiable
+                    priors. Given the image and the estimation from previous frames, (a) the optimization pipeline first
+                    initializes the poses with
+                    pre-trained networks and then minimizes the rendering and physics losses from the differentiable
+                    operators; (b) the filtering
+                    pipeline can take some simple observations and use Extended Kalman Filter (EKF) to update the state
+                    estimation. EKF
+                    requires differentiable physics and rendering to model the system and runs much faster than the
+                    optimization pipeline.
+                </p>
+                <br>
+            </div>
+
+            <div align="center">
+                <h1>Results</h1>
+            </div>
+
+            <hr />
+
+            <div align="center">
+                <h2>Optimization Process of the Pose Estimation</h2>
+            </div>
+
+            <div class="grid-container">
+                <div class="grid-item"><img src="data/opti1.gif" alt="First Image"></div>
+                <div class="grid-item"><img src="data/opti2.gif" alt="Second Image"></div>
+                <div class="grid-item"><img src="data/opti3.gif" alt="Third Image"></div>
+                <div class="grid-item"><img src="data/opti4.gif" alt="Fourth Image"></div>
+                <div class="grid-item"><img src="data/opti5.gif" alt="First Image"></div>
+                <div class="grid-item"><img src="data/opti6.gif" alt="Second Image"></div>
+                <div class="grid-item"><img src="data/opti7.gif" alt="Third Image"></div>
+                <div class="grid-item"><img src="data/opti8.gif" alt="Fourth Image"></div>
+            </div>
+
+            <br />
+
+            <div align="center">
+                <h2>Tracking</h2>
+            </div>
+
+            <div class="grid-container2">
+                <div class="grid-item"><img src="data/tracking1.gif" alt="First Image"></div>
+                <div class="grid-item"><img src="data/tracking2.gif" alt="Second Image"></div>
+                <div class="grid-item"><img src="data/tracking3.gif" alt="Third Image"></div>
+            </div>
+
+            <br />
+
+            <div align="center">
+                <h2>Contact Optimization</h2>
+            </div>
+
+            <div class="grid-container3">
+                <div class="grid-item"><img src="data/contact1.gif" alt="First Image"></div>
+                <div class="grid-item"><img src="data/contact2.gif" alt="Second Image"></div>
+                <div class="grid-item"><img src="data/contact3.gif" alt="Third Image"></div>
+                <div class="grid-item"><img src="data/contact4.gif" alt="Fourth Image"></div>
+            </div>
+
+
+            <br />
+
+            <div align="center">
+                <h2>Human-Object Pose Optimization</h2>
+            </div>
+            <div class="grid-container2">
+                <div class="grid-item"><img src="data/human1.png" alt="First Image">
+                    <h4><b>Phosa [1]</b></h4>
+                </div>
+                <div class="grid-item"><img src="data/human2.gif" alt="Second Image">
+                    <h4><b>w/ Rendering term</b></h4>
+                </div>
+                <div class="grid-item"><img src="data/human3.gif" alt="Third Image">
+                    <h4><b>w/ Rendering+Physics terms</b></h4>
+                </div>
+            </div>
+
+            <div align="center">
+                <h1>Reference</h1>
+            </div>
+            <hr />
+            <h4>[1] Zhang, Jason Y., Sam Pepose, Hanbyul Joo, Deva Ramanan, Jitendra Malik, and Angjoo Kanazawa.
+                "Perceiving 3d human-object spatial arrangements from a single image in the wild." In ECCV 2020.</h4>
+
+            <div align="center">
+                <h1>BibTeX</h1>
+            </div>
+            <hr />
+            <pre style="font-size: medium;">@InProceedings{zhang2023handypriors,
+author       = {Shutong Zhang and Yiling Qiao and Guanglei Zhu and Eric Heiden and Dylan Turpin and Jingzhou Liu and Animesh Garg},
+title        = {HandyPriors: Physically Consistent Perception of Hand-Object Interactions with Differentiable Priors},
+booktitle    = {Arxiv},
+year         = {2023},
+}</pre>
+
+        </div>
+    </div>
+    </div>
+    <br /><br />
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+    <script src="./model_click.js"></script>
+    <script>
+        modelEventListeners()
+        enableInteraction()
+    </script>
+</body>
+
+</html>
